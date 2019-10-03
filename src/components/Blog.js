@@ -9,17 +9,18 @@ class Blog extends React.Component{
         }
     }
 
-    componentsDidMount(){
-        fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(response => response.json())
-        .then(response => {
-            this.setState({
-                posts: response.slice(0, 5)
+    componentDidMount(){
+        fetch("https://jsonplaceholder.typicode.com/posts")
+                .then(response => response.json())
+                .then(response => {
+                   this.setState({
+                      posts:response.slice(0,5)
             })
         })
     }
 
     render() {
+
         return (
             <section id="first">
 						<header>
@@ -28,7 +29,7 @@ class Blog extends React.Component{
 						<div className="content">
                             {
                                 this.state.posts.map(post => {
-                                    return <Post key={post.id} post={post} />
+                                    return <Post key={post.id} post={post}/>
                                 })
                             }
 							
